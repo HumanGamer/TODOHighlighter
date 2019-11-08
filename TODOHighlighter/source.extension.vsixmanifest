@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="TODOHighlighter.caea5ef1-8870-4b74-9d3c-8f0ba91b5d56" Version="1.0" Language="en-US" Publisher="Matthieu Parizeau" />
+        <Identity Id="TODOHighlighter.caea5ef1-8870-4b74-9d3c-8f0ba91b5d56" Version="1.0.0" Language="en-US" Publisher="Human Gamer" />
         <DisplayName>TODO Highlighter</DisplayName>
         <Description xml:space="preserve">Highlights TODO:, FIXME:, TEMP:, and TMP: prefixed comments in C/C++ and C#
 Credit to: https://github.com/Benio101/Color.Comment for some of the code.</Description>
