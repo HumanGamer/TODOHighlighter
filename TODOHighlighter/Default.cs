@@ -12,8 +12,7 @@ namespace TODOHighlighter
 	{
 		internal static class Colors
 		{
-			internal static readonly Color Comment = Color.FromRgb(87, 166, 74);
-			internal static readonly Color Todo = Color.FromRgb(38, 78, 196);
+			internal static readonly Color Todo = Color.FromRgb(255, 0, 255);
 		}
 	}
 }

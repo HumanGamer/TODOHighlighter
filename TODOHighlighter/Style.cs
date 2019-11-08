@@ -11,26 +11,6 @@ using System.Threading.Tasks;
 namespace TODOHighlighter
 {
 	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Comment.Default")]
-	[Name("Comment.Default")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Comment)]
-	[UserVisible(true)]
-	[Order(After = PredefinedClassificationTypeNames.Comment)]
-	[Order(After = "XML Doc Comment")]
-	internal sealed class Format_Comment_Default
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Comment_Default()
-		{
-			DisplayName = "Comment";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Comment;
-		}
-	}
-
-	[Export(typeof(EditorFormatDefinition))]
 	[ClassificationType(ClassificationTypeNames = "Comment.Todo")]
 	[Name("Comment.Todo")]
 	[BaseDefinition(PredefinedClassificationTypeNames.Comment)]

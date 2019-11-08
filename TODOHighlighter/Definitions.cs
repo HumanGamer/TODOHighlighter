@@ -12,11 +12,6 @@ namespace TODOHighlighter
 	internal static class Definitions
 	{
 		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Comment.Default")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Comment_Default;
-
-		[Export(typeof(ClassificationTypeDefinition))]
 		[Name("Comment.Todo")]
 		private static readonly ClassificationTypeDefinition
 		Definition_Comment_Todo;

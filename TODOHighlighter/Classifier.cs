@@ -15,7 +15,6 @@ namespace TODOHighlighter
 	{
 		public event EventHandler<ClassificationChangedEventArgs> ClassificationChanged;
 
-		private readonly IClassificationType Comment_Default;
 		private readonly IClassificationType Comment_Todo;
 
 		private bool _isClassificationRunning;
@@ -26,7 +25,6 @@ namespace TODOHighlighter
 			_isClassificationRunning = false;
 			_classifier = classifier;
 
-			Comment_Default = registry.GetClassificationType("Comment.Default");
 			Comment_Todo = registry.GetClassificationType("Comment.Todo");
 		}
 
@@ -82,8 +80,6 @@ namespace TODOHighlighter
 						goto SkipComment;
 				}
 
-				var comment = Comment_Default;
-
 				// Start offset of slashes (without star part: either "*" or "*/").
 				int SlashesStart = span.Start + offset + match.Groups["Slashes"].Index;
 				if (starOffset == 2) SlashesStart += 1;
@@ -97,15 +93,6 @@ namespace TODOHighlighter
 
 				if (IsTripleSlash)
 					goto SkipComment;
-
-				spans.Add(new ClassificationSpan(new SnapshotSpan
-				(
-					span.Snapshot, new Span
-					(
-						SlashesStart,
-						match.Length + SlashesLength
-					)), comment
-				)) ;
 
 				var commentText = match.Groups["Comment"].Value;
 				int commentStart = span.Start + offset + match.Groups["Comment"].Index;
