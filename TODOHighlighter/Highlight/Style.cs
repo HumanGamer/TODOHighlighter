@@ -15,7 +15,7 @@ namespace TODOHighlighter.Highlight
 	[ClassificationType(ClassificationTypeNames = "Comment.Todo")]
 	[Name("Comment.Todo")]
 	[BaseDefinition(PredefinedClassificationTypeNames.Comment)]
-	[UserVisible(true)]
+	[UserVisible(false)]
 	[Order(After = PredefinedClassificationTypeNames.Comment)]
 	[Order(After = "XML Doc Comment")]
 	internal sealed class Format_Comment_Todo
