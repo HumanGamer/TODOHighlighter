@@ -52,7 +52,7 @@
     <Compile Include="Highlight\Classifier.cs" />
     <Compile Include="Options\Default.cs" />
     <Compile Include="Highlight\Definitions.cs" />
-    <Compile Include="Registries\PrefixManager.cs" />
+    <Compile Include="Registries\PrefixRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Highlight\Provider.cs" />

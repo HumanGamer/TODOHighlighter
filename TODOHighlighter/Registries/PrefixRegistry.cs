@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TODOHighlighter.Registries
 {
-	internal static class PrefixManager
+	internal static class PrefixRegistry
 	{
 		private static readonly List<string> _prefixes = new List<string>();
 
-		static PrefixManager()
+		static PrefixRegistry()
 		{
 			InitDefaults();
 		}
@@ -46,7 +46,7 @@ namespace TODOHighlighter.Registries
 
 		private static void InitDefaults()
 		{
-			PrefixManager.Add("todo", "temp", "tmp", "fixme");
+			PrefixRegistry.Add("todo", "temp", "tmp", "fixme");
 		}
 	}
 }

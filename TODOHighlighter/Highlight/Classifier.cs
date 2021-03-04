@@ -102,9 +102,9 @@ namespace TODOHighlighter.Highlight
 
 				var skipInlineMatching = false;
 
-				for (int i = 0; i < PrefixManager.Count; i++)
+				for (int i = 0; i < PrefixRegistry.Count; i++)
 				{
-					var prefix = PrefixManager.GetPrefix(i);
+					var prefix = PrefixRegistry.GetPrefix(i);
 
 					if (Settings.RequireColon)
 						prefix += ':';
