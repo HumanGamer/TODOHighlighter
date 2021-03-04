@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TODOHighlighter.Options;
+using TODOHighlighter.Registries;
+using TODOHighlighter.Utilities;
 
-namespace TODOHighlighter
+namespace TODOHighlighter.Highlight
 {
 
 	internal class Classifier : IClassifier

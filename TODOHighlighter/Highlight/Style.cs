@@ -7,8 +7,9 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TODOHighlighter.Options;
 
-namespace TODOHighlighter
+namespace TODOHighlighter.Highlight
 {
 	[Export(typeof(EditorFormatDefinition))]
 	[ClassificationType(ClassificationTypeNames = "Comment.Todo")]

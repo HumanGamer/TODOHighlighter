@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TODOHighlighter
+namespace TODOHighlighter.Options
 {
 	using Color = System.Windows.Media.Color;
 

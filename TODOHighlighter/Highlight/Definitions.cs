@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TODOHighlighter
+namespace TODOHighlighter.Highlight
 {
 	internal static class Definitions
 	{

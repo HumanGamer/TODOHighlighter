@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TODOHighlighter
+namespace TODOHighlighter.Highlight
 {
 	[Export(typeof(IClassifierProvider)), ContentType("C/C++"), ContentType("CSharp"), ContentType("JavaScript"), ContentType("TypeScript")]
 	internal sealed class Provider : IClassifierProvider
