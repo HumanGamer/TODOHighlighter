@@ -31,4 +31,11 @@ namespace TODOHighlighter.Highlight
 			IsBold = Settings.Style.Bold;
 		}
 	}
+
+	internal static class Definitions
+	{
+		[Export(typeof(ClassificationTypeDefinition))]
+		[Name("Comment.Todo")]
+		private static readonly ClassificationTypeDefinition Definition_Comment_Todo;
+	}
 }
