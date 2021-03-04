@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.Shell;
 using TODOHighlighter.Options;
 using Task = System.Threading.Tasks.Task;
 
-namespace TODOHighlighter
+namespace TODOHighlighter.Base
 {
 	[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 	[ProvideAutoLoad(VSConstants.UICONTEXT.ShellInitialized_string, PackageAutoLoadFlags.BackgroundLoad)]
