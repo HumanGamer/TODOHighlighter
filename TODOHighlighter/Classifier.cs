@@ -91,7 +91,7 @@ namespace TODOHighlighter
 				// If comment is triple slash (begins with "///").
 				var IsTripleSlash = SlashesLength == 3;
 
-				if (IsTripleSlash)
+				if (IsTripleSlash && !Settings.AllowDocComments)
 					goto SkipComment;
 
 				var commentText = match.Groups["Comment"].Value;

@@ -10,5 +10,6 @@ namespace TODOHighlighter
 	{
 		public static bool CaseSensitive = false;
 		public static bool RequireColon = true;
+		public static bool AllowDocComments = true;
 	}
 }
