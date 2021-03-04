@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace TODOHighlighter
 {
-	[Export(typeof(IClassifierProvider)), ContentType("C/C++"), ContentType("CSharp")]
+	[Export(typeof(IClassifierProvider)), ContentType("C/C++"), ContentType("CSharp"), ContentType("JavaScript"), ContentType("TypeScript")]
 	internal sealed class Provider : IClassifierProvider
 	{
 		[Import]
