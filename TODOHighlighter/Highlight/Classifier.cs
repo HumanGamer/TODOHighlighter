@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TODOHighlighter.Options;
-using TODOHighlighter.Registries;
 using TODOHighlighter.Utilities;
 
 namespace TODOHighlighter.Highlight
@@ -94,7 +93,7 @@ namespace TODOHighlighter.Highlight
 				// If comment is triple slash (begins with "///").
 				var IsTripleSlash = SlashesLength == 3;
 
-				if (IsTripleSlash && !Settings.AllowDocComments)
+				if (IsTripleSlash && !Settings.Behaviour.AllowDocComments)
 					goto SkipComment;
 
 				var commentText = match.Groups["Comment"].Value;
@@ -102,16 +101,16 @@ namespace TODOHighlighter.Highlight
 
 				var skipInlineMatching = false;
 
-				for (int i = 0; i < PrefixRegistry.Count; i++)
+				for (int i = 0; i < Settings.Behaviour.Prefixes.Count; i++)
 				{
-					var prefix = PrefixRegistry.GetPrefix(i);
+					var prefix = Settings.Behaviour.Prefixes[i];
 
-					if (Settings.RequireColon)
+					if (Settings.Behaviour.RequireColon)
 						prefix += ':';
 
 					var compareText = commentText;
 
-					if (!Settings.CaseSensitive)
+					if (!Settings.Behaviour.CaseSensitive)
 					{
 						prefix = prefix.ToLower();
 						compareText = compareText.ToLower();

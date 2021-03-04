@@ -27,8 +27,8 @@ namespace TODOHighlighter.Highlight
 			DisplayName = "Todo Comment";
 
 			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Todo;
-			IsBold = true;
+			ForegroundColor = Settings.Style.Color;
+			IsBold = Settings.Style.Bold;
 		}
 	}
 }
