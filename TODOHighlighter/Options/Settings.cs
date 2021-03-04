@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using TODOHighlighter.Highlight;
 
 namespace TODOHighlighter.Options
 {
@@ -16,14 +17,7 @@ namespace TODOHighlighter.Options
 			public static bool CaseSensitive = false;
 			public static bool RequireColon = true;
 			public static bool AllowDocComments = true;
-			public static List<string> Prefixes = new List<string>(new string[] { "todo", "temp", "tmp", "fixme" });
-		}
-
-		public class Style
-		{
-			public static Color Color = Color.FromRgb(0, 141, 217);
-			public static bool Bold = true;
-			public static bool Italic = false;
+			public static string[] Prefixes = new string[] { "TODO", "TEMP", "TMP", "FIXME" };
 		}
 
 	}
@@ -38,7 +32,6 @@ namespace TODOHighlighter.Options
 			get => Settings.Behaviour.CaseSensitive;
 			set => Settings.Behaviour.CaseSensitive = value;
 		}
-
 
 		[Category("Behaviour")]
 		[DisplayName("Require Colon")]
@@ -61,37 +54,10 @@ namespace TODOHighlighter.Options
 		[Category("Behaviour")]
 		[DisplayName("Prefixes")]
 		[Description("The list of prefixes to look for")]
-		public List<string> Prefixes
+		public string[] Prefixes
 		{
 			get => Settings.Behaviour.Prefixes;
 			set => Settings.Behaviour.Prefixes = value;
-		}
-
-		[Category("Style")]
-		[DisplayName("Prefixes")]
-		[Description("The color of highlighted lines")]
-		public Color TodoColor
-		{
-			get => Settings.Style.Color;
-			set => Settings.Style.Color = value;
-		}
-
-		[Category("Style")]
-		[DisplayName("Bold")]
-		[Description("Should highlighted lines be bold?")]
-		public bool Bold
-		{
-			get => Settings.Style.Bold;
-			set => Settings.Style.Bold = value;
-		}
-
-		[Category("Style")]
-		[DisplayName("Italic")]
-		[Description("Should highlighted lines be italic?")]
-		public bool Italic
-		{
-			get => Settings.Style.Italic;
-			set => Settings.Style.Italic = value;
 		}
 	}
 }

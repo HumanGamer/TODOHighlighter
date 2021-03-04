@@ -101,7 +101,7 @@ namespace TODOHighlighter.Highlight
 
 				var skipInlineMatching = false;
 
-				for (int i = 0; i < Settings.Behaviour.Prefixes.Count; i++)
+				for (int i = 0; i < Settings.Behaviour.Prefixes.Length; i++)
 				{
 					var prefix = Settings.Behaviour.Prefixes[i];
 
@@ -116,7 +116,7 @@ namespace TODOHighlighter.Highlight
 						compareText = compareText.ToLower();
 					}
 
-					if (compareText.Trim().StartsWith(prefix.ToLower() + ":"))
+					if (compareText.Trim().StartsWith(prefix))
 					{
 						spans.Add(new ClassificationSpan(new SnapshotSpan
 						(
