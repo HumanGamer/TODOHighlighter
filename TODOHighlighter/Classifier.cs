@@ -102,7 +102,19 @@ namespace TODOHighlighter
 				for (int i = 0; i < PrefixManager.Count; i++)
 				{
 					var prefix = PrefixManager.GetPrefix(i);
-					if (commentText.ToLower().Trim().StartsWith(prefix.ToLower() + ":"))
+
+					if (Settings.RequireColon)
+						prefix += ':';
+
+					var compareText = commentText;
+
+					if (!Settings.CaseSensitive)
+					{
+						prefix = prefix.ToLower();
+						compareText = compareText.ToLower();
+					}
+
+					if (compareText.Trim().StartsWith(prefix.ToLower() + ":"))
 					{
 						spans.Add(new ClassificationSpan(new SnapshotSpan
 						(
