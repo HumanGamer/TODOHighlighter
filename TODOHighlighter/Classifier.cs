@@ -56,7 +56,7 @@ namespace TODOHighlighter
 
 			int currentOffset;
 
-			NextComment:
+		NextComment:
 			foreach (Match match in new Regex(@"(?<Star>\*)?" + @"(?<Slashes>(?<!/)(/{2,}))[ \t\v\f]*" + @"(?<Comment>[^\n]*)").Matches(text))
 			{
 				var starOffset = 0;
@@ -96,7 +96,7 @@ namespace TODOHighlighter
 
 				var commentText = match.Groups["Comment"].Value;
 				int commentStart = span.Start + offset + match.Groups["Comment"].Index;
-				
+
 				var skipInlineMatching = false;
 
 				for (int i = 0; i < PrefixManager.Count; i++)
@@ -139,7 +139,7 @@ namespace TODOHighlighter
 				offset += currentOffset;
 				goto NextComment;
 
-				SkipComment:
+			SkipComment:
 				currentOffset =
 						match.Groups["Slashes"].Index
 					+ match.Groups["Slashes"].Length
