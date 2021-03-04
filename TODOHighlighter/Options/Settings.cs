@@ -23,6 +23,7 @@ namespace TODOHighlighter.Options
 		{
 			public static Color Color = Color.FromRgb(0, 141, 217);
 			public static bool Bold = true;
+			public static bool Italic = false;
 		}
 
 	}
@@ -82,6 +83,15 @@ namespace TODOHighlighter.Options
 		{
 			get => Settings.Style.Bold;
 			set => Settings.Style.Bold = value;
+		}
+
+		[Category("Style")]
+		[DisplayName("Italic")]
+		[Description("Should highlighted lines be italic?")]
+		public bool Italic
+		{
+			get => Settings.Style.Italic;
+			set => Settings.Style.Italic = value;
 		}
 	}
 }

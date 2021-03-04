@@ -29,6 +29,7 @@ namespace TODOHighlighter.Highlight
 			BackgroundCustomizable = false;
 			ForegroundColor = Settings.Style.Color;
 			IsBold = Settings.Style.Bold;
+			IsItalic = Settings.Style.Italic;
 		}
 	}
 
