@@ -1,36 +1,47 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Threading;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using TODOHighlighter.Base;
 using TODOHighlighter.Highlight;
 
 namespace TODOHighlighter.Options
 {
-	public static class Settings
+	public interface IOptions : INotifyPropertyChanged
 	{
-		public class Behaviour
-		{
-			public static bool CaseSensitive = false;
-			public static bool RequireColon = true;
-			public static bool AllowDocComments = true;
-			public static string[] Prefixes = new string[] { "TODO", "TEMP", "TMP", "FIXME" };
-		}
-
+		bool CaseSensitive { get; }
+		bool RequireColon { get; }
+		bool AllowDocComments { get; }
+		string[] Prefixes { get; }
 	}
 
-	public class OptionPageGrid : DialogPage
+	public class OptionPageGrid : DialogPage, IOptions
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		private bool _caseSensitive = false;
+		private bool _requireColon = true;
+		private bool _allowDocComments = false;
+		private string[] _prefixes = new string[] { "TODO", "TEMP", "TMP", "FIXME" };
+
 		[Category("Behaviour")]
 		[DisplayName("Case Sensitive")]
 		[Description("Do prefixes have to be case sensitive?")]
 		public bool CaseSensitive
 		{
-			get => Settings.Behaviour.CaseSensitive;
-			set => Settings.Behaviour.CaseSensitive = value;
+			get => _caseSensitive;
+			set
+			{
+				_caseSensitive = value;
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CaseSensitive)));
+			}
 		}
 
 		[Category("Behaviour")]
@@ -38,8 +49,12 @@ namespace TODOHighlighter.Options
 		[Description("Is a colon \":\" required after the prefix?")]
 		public bool RequireColon
 		{
-			get => Settings.Behaviour.RequireColon;
-			set => Settings.Behaviour.RequireColon = value;
+			get => _requireColon;
+			set
+			{
+				_requireColon = value;
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RequireColon)));
+			}
 		}
 
 		[Category("Behaviour")]
@@ -47,8 +62,12 @@ namespace TODOHighlighter.Options
 		[Description("Should special comments be highlighted in Doc Comments?")]
 		public bool AllowDocComments
 		{
-			get => Settings.Behaviour.AllowDocComments;
-			set => Settings.Behaviour.AllowDocComments = value;
+			get => _allowDocComments;
+			set
+			{
+				_allowDocComments = value;
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AllowDocComments)));
+			}
 		}
 
 		[Category("Behaviour")]
@@ -56,8 +75,12 @@ namespace TODOHighlighter.Options
 		[Description("The list of prefixes to look for")]
 		public string[] Prefixes
 		{
-			get => Settings.Behaviour.Prefixes;
-			set => Settings.Behaviour.Prefixes = value;
+			get => _prefixes;
+			set
+			{
+				_prefixes = value;
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Prefixes)));
+			}
 		}
 	}
 }

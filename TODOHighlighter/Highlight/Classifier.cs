@@ -22,10 +22,13 @@ namespace TODOHighlighter.Highlight
 		private bool _isClassificationRunning;
 		private readonly IClassifier _classifier;
 
-		internal Classifier(IClassificationTypeRegistryService registry, IClassifier classifier)
+		private readonly IOptions _options;
+
+		internal Classifier(IClassificationTypeRegistryService registry, IClassifier classifier, IOptions options)
 		{
 			_isClassificationRunning = false;
 			_classifier = classifier;
+			_options = options;
 
 			Comment_Todo = registry.GetClassificationType("Comment.Todo");
 		}
@@ -93,7 +96,7 @@ namespace TODOHighlighter.Highlight
 				// If comment is triple slash (begins with "///").
 				var IsTripleSlash = SlashesLength == 3;
 
-				if (IsTripleSlash && !Settings.Behaviour.AllowDocComments)
+				if (IsTripleSlash && !_options.AllowDocComments)
 					goto SkipComment;
 
 				var commentText = match.Groups["Comment"].Value;
@@ -101,16 +104,16 @@ namespace TODOHighlighter.Highlight
 
 				var skipInlineMatching = false;
 
-				for (int i = 0; i < Settings.Behaviour.Prefixes.Length; i++)
+				for (int i = 0; i < _options.Prefixes.Length; i++)
 				{
-					var prefix = Settings.Behaviour.Prefixes[i];
+					var prefix = _options.Prefixes[i];
 
-					if (Settings.Behaviour.RequireColon)
+					if (_options.RequireColon)
 						prefix += ':';
 
 					var compareText = commentText;
 
-					if (!Settings.Behaviour.CaseSensitive)
+					if (!_options.CaseSensitive)
 					{
 						prefix = prefix.ToLower();
 						compareText = compareText.ToLower();
