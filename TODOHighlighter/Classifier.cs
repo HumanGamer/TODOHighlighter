@@ -96,13 +96,16 @@ namespace TODOHighlighter
 
 				var commentText = match.Groups["Comment"].Value;
 				int commentStart = span.Start + offset + match.Groups["Comment"].Index;
-				
+				var normalizedText = commentText.ToLower().Trim();
+
 				var skipInlineMatching = false;
 
 				for (int i = 0; i < PrefixManager.Count; i++)
 				{
-					var prefix = PrefixManager.GetPrefix(i);
-					if (commentText.ToLower().Trim().StartsWith(prefix.ToLower() + ":"))
+					var prefix = PrefixManager.GetPrefix(i).ToLower();
+
+					if (normalizedText.StartsWith(prefix + ":")
+						|| normalizedText.StartsWith(prefix + " :"))
 					{
 						spans.Add(new ClassificationSpan(new SnapshotSpan
 						(
