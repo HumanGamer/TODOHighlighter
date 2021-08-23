@@ -99,10 +99,16 @@ namespace TODOHighlighter
 				
 				var skipInlineMatching = false;
 
+				int GetZeroCount(int length) => length < 0 ? 0 : length;
+
 				for (int i = 0; i < PrefixManager.Count; i++)
 				{
-					var prefix = PrefixManager.GetPrefix(i);
-					if (commentText.ToLower().Trim().StartsWith(prefix.ToLower() + ":"))
+					var prefix = PrefixManager.GetPrefix(i).ToLower();
+					var lowerTrimCommandText = commentText.ToLower().Trim();
+					var mainPrefix = prefix + ":";
+					if (lowerTrimCommandText.StartsWith(mainPrefix) ||(lowerTrimCommandText.StartsWith(prefix) &&
+						lowerTrimCommandText.Substring(prefix.Length, GetZeroCount(lowerTrimCommandText.IndexOf(':') - prefix.Length))
+						.TrimEnd(new[] { ' ', '\t', '\n', '\r' }).Equals(string.Empty)))
 					{
 						spans.Add(new ClassificationSpan(new SnapshotSpan
 						(
@@ -116,7 +122,7 @@ namespace TODOHighlighter
 
 						skipInlineMatching = true;
 					}
-				}
+				} 
 
 				if (skipInlineMatching)
 					goto FinishClassification;

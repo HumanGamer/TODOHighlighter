@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TODOHighlighter
+﻿namespace TODOHighlighter
 {
 	using Color = System.Windows.Media.Color;
 
@@ -12,7 +6,7 @@ namespace TODOHighlighter
 	{
 		internal static class Colors
 		{
-			internal static readonly Color Todo = Color.FromRgb(255, 0, 255);
+			internal static readonly Color Todo = Color.FromRgb(102, 102, 0);
 		}
 	}
 }
