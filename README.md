@@ -1,4 +1,18 @@
 # TODO Highlighter
-Highlights TODO:, FIXME:, TEMP:, and TMP: prefixed comments in C/C++, Javascript and C#
+
+Prefixed comment highlighting.
+
+## Supported languages
+- C
+- C++
+- C#
+- Javascript
+- TypeScript
+
+## Supported Keywords
+- TODO:
+- FIXME:
+- TEMP:
+- TMP: 
 
 Credit to: https://github.com/Benio101/Color.Comment for some of the code.
