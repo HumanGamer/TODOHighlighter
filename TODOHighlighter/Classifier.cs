@@ -3,14 +3,10 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace TODOHighlighter
 {
-
 	internal class Classifier : IClassifier
 	{
 		public event EventHandler<ClassificationChangedEventArgs> ClassificationChanged;
@@ -25,7 +21,7 @@ namespace TODOHighlighter
 			_isClassificationRunning = false;
 			_classifier = classifier;
 
-			Comment_Todo = registry.GetClassificationType("Comment.Todo");
+			Comment_Todo = registry.GetClassificationType(Consts.ClassificationTypName);
 		}
 
 		public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
@@ -76,7 +72,7 @@ namespace TODOHighlighter
 						goto SkipComment;
 
 					// Prevent recursive matching fragment of comment as another comment.
-					if (Utils.IsClassifiedAs(Classifications, new[] { "Comment.Default" }))//, "Comment.Triple" }))
+					if (Utils.IsClassifiedAs(Classifications, new[] { "Comment.Default" })) //, "Comment.Triple" }))
 						goto SkipComment;
 				}
 
@@ -96,7 +92,7 @@ namespace TODOHighlighter
 
 				var commentText = match.Groups["Comment"].Value;
 				int commentStart = span.Start + offset + match.Groups["Comment"].Index;
-				
+
 				var skipInlineMatching = false;
 
 				for (int i = 0; i < PrefixManager.Count; i++)
@@ -110,7 +106,6 @@ namespace TODOHighlighter
 							(
 								SlashesStart,
 								commentText.Length + SlashesLength
-
 							)
 						), Comment_Todo));
 
@@ -129,9 +124,9 @@ namespace TODOHighlighter
 
 				SkipComment:
 				currentOffset =
-						match.Groups["Slashes"].Index
+					match.Groups["Slashes"].Index
 					+ match.Groups["Slashes"].Length
-				;
+					;
 
 				text = text.Substring(currentOffset);
 				offset += currentOffset;
