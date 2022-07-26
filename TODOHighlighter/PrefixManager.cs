@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TODOHighlighter
 {
@@ -46,7 +42,7 @@ namespace TODOHighlighter
 
 		private static void InitDefaults()
 		{
-			PrefixManager.Add("todo", "temp", "tmp", "fixme");
+			Add("todo", "temp", "tmp", "fixme");
 		}
 	}
 }

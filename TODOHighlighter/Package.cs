@@ -9,9 +9,14 @@ namespace TODOHighlighter
 {
 	[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 	[ProvideAutoLoad(VSConstants.UICONTEXT.ShellInitialized_string, PackageAutoLoadFlags.BackgroundLoad)]
-	[Guid("f3bd3bea-d1a9-4140-ad18-adc750d25b06")]
+	[Guid(Package.PackageGuidString)]
 	public sealed class Package : AsyncPackage
 	{
+		/// <summary>
+		/// TODOHighlighter GUID string.
+		/// </summary>
+		public const string PackageGuidString = "f3bd3bea-d1a9-4140-ad18-adc750d25b06";
+
 		protected override async Task InitializeAsync(CancellationToken token, IProgress<ServiceProgressData> progress)
 		{
 			Project.Package = this;

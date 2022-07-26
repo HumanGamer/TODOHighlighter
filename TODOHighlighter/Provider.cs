@@ -1,23 +1,16 @@
 ﻿using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TODOHighlighter
 {
 	[Export(typeof(IClassifierProvider)), ContentType("C/C++"), ContentType("CSharp"), ContentType("JavaScript"), ContentType("TypeScript")]
 	internal sealed class Provider : IClassifierProvider
 	{
-		[Import]
-		private readonly IClassificationTypeRegistryService ClassificationTypeRegistryService;
+		[Import] private readonly IClassificationTypeRegistryService ClassificationTypeRegistryService;
 
-		[Import]
-		private readonly IClassifierAggregatorService ClassifierAggregatorService;
+		[Import] private readonly IClassifierAggregatorService ClassifierAggregatorService;
 
 		private static bool _ignoreRequest;
 
